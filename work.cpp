@@ -223,7 +223,7 @@ void sort_matrix(int* arr, int matrix_size)
     int* ptr1 = arr;
     int* ptr2 = arr + 1;
     int temp;
-    for (int i = 0; i < (matrix_size * matrix_size); i++)
+    for (int i = 0; i < (matrix_size * matrix_size - 1); i++)
     {
         for (int j = i + 1; j < (matrix_size * matrix_size); j++)
         {
