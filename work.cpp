@@ -20,7 +20,6 @@ void show_matrix(int* arr, int matrix_size)
 //Подпрограмма для заполнения массива "змейкой"
 void fill_like_snake(int arr[100], int matrix_size)
 {
-    bool sign_number;
     //Указатель указывает на первый (нулевой) элемент массива
     int* ptr = arr;
     //Начало работы с координатами консоли
@@ -38,16 +37,8 @@ void fill_like_snake(int arr[100], int matrix_size)
         {
             for (int j = 0; j < matrix_size; j++)
             {
-                //Элементу массива через указатель присваивается случайное значение от -99 до 99
-                sign_number = rand() % 2;
-                if (sign_number)
-                {
-                    *ptr = rand() % 100;
-                }
-                else
-                {
-                    *ptr = (rand() % 100) * (-1);
-                }
+                //Элементу массива через указатель присваивается случайное значение
+                *ptr = rand() % (matrix_size * matrix_size) + 1;
                 //Выставляется координата х: число 4 выбрано, чтобы был пробел даже выбралось отрицательное двузначное число
                 position.X = i * 4;
                 //Выставляется координата y: к заранее найденной переменной y_coord добавляется j
@@ -69,15 +60,7 @@ void fill_like_snake(int arr[100], int matrix_size)
             //Если число чётное, цикл идёт "вверх"
             for (int j = (matrix_size - 1); j > -1; j--)
             {
-                sign_number = rand() % 2;
-                if (sign_number)
-                {
-                    *ptr = rand() % 100;
-                }
-                else
-                {
-                    *ptr = (rand() % 100) * (-1);
-                }
+                *ptr = rand() % (matrix_size * matrix_size) + 1;
                 position.X = i * 4;
                 position.Y = y_coord + j;
                 SetConsoleCursorPosition(hConsole, position);
@@ -102,7 +85,6 @@ void fill_like_snake(int arr[100], int matrix_size)
 //Подпрограмма для заполнения массива спиралью
 void spiral_filling(int* arr, short unsigned int matrix_size)
 {
-    bool sign_number;
     int* ptr = arr;
     CONSOLE_SCREEN_BUFFER_INFO info_y;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info_y);
@@ -114,15 +96,7 @@ void spiral_filling(int* arr, short unsigned int matrix_size)
         //Вначале алгоритм ведёт по верхней стороне - от i до matrix_size - i
         for (int j = 0; j < (matrix_size - i * 2 - 1); j++)
         {
-            sign_number = rand() % 2;
-            if (sign_number)
-            {
-                *ptr = rand() % 100;
-            }
-            else
-            {
-                *ptr = (rand() % 100) * (-1);
-            }
+            *ptr = rand() % (matrix_size * matrix_size) + 1;
             position.X = (j + i) * 4;
             position.Y = y_coord + i;
             SetConsoleCursorPosition(hConsole, position);
@@ -134,15 +108,7 @@ void spiral_filling(int* arr, short unsigned int matrix_size)
         //Тут алгоритм ведёт по правой стороне
         for (int j = 0; j < (matrix_size - i * 2 - 1); j++)
         {
-            sign_number = rand() % 2;
-            if (sign_number)
-            {
-                *ptr = rand() % 100;
-            }
-            else
-            {
-                *ptr = (rand() % 100) * (-1);
-            }
+            *ptr = rand() % (matrix_size * matrix_size) + 1;
             position.X = (matrix_size - i - 1) * 4;
             position.Y = y_coord + (i + j);
             SetConsoleCursorPosition(hConsole, position);
@@ -154,15 +120,7 @@ void spiral_filling(int* arr, short unsigned int matrix_size)
         //Алгоритм ведёт по нижней стороне
         for (int j = (matrix_size - i * 2 - 1); j > 0; j--)
         {
-            sign_number = rand() % 2;
-            if (sign_number)
-            {
-                *ptr = rand() % 100;
-            }
-            else
-            {
-                *ptr = (rand() % 100) * (-1);
-            }
+            *ptr = rand() % (matrix_size * matrix_size) + 1;
             position.X = (i + j) * 4;
             position.Y = y_coord + matrix_size - 1 - i;
             SetConsoleCursorPosition(hConsole, position);
@@ -173,15 +131,7 @@ void spiral_filling(int* arr, short unsigned int matrix_size)
         //Алгоритм ведёт по левой стороне
         for (int j = (matrix_size - i * 2 - 1); j > 0; j--)
         {
-            sign_number = rand() % 2;
-            if (sign_number)
-            {
-                *ptr = rand() % 100;
-            }
-            else
-            {
-                *ptr = (rand() % 100) * (-1);
-            }
+            *ptr = rand() % (matrix_size * matrix_size) + 1;
             position.X = i * 4;
             position.Y = y_coord + (j + i);
             SetConsoleCursorPosition(hConsole, position);
